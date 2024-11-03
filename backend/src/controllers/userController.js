@@ -1,4 +1,5 @@
 import userModel from "../models/userModel.js"
+import bcryptjs from 'bcryptjs'
 
 
 //business Logic 
@@ -7,7 +8,8 @@ const sign_up = async (req,res)=>{
     
     try{
         const {username,email,password} = req.body
-        const newUser = new userModel({username,email,password})
+        const hashPassword = bcryptjs.hashSync(password,10)
+        const newUser = new userModel({username,email,password:hashPassword})
         await newUser.save();
 
         
