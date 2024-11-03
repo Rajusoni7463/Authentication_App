@@ -8,7 +8,7 @@ const connectDB = async () => {
         });
 
         if (connectInstance) {
-            console.log("Database connected successfully");
+            console.log(`Database connected successfully ${connectInstance.connection.host}`);
         } else {
             console.log("Something went wrong");
         }
