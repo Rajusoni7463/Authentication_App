@@ -3,7 +3,7 @@ import bcryptjs from 'bcryptjs'
 
 
 //business Logic 
-const sign_up = async (req,res)=>{
+const sign_up = async (req,res ,next)=>{
     console.log("this is post requst",req.body)
     
     try{
@@ -15,10 +15,7 @@ const sign_up = async (req,res)=>{
         
 
     }catch(err){
-        res.status(500).json({
-            success:false,
-            message:"interval server errror"
-        })
+       next(err)
     }
 }
 //create product
